@@ -267,10 +267,10 @@ function bill_add_post_type_gaichu()
 	register_post_type(
 		'gaichu',
 		array(
-		'labels'=>array(
-		'name' => '支払仕訳',
-		'edit_item' => '領収書・受請求書の編集',
-		'add_new_item' => '領収書・受請求書の追加',
+			'labels' => array(
+				'name' => '支払仕訳',
+				'edit_item' => '領収書・受請求書の編集',
+				'add_new_item' => '領収書・受請求書の追加',
 			),
 			'public'             => true,
 			'publicly_queryable' => true,
@@ -494,120 +494,141 @@ function add_duplicate_pagelink($actions, $post)
 /***********************************************************
  権限名の変更
  ***********************************************************/
-function change_role_name() {
-  global $wp_roles;
-  if(!isset($wp_roles)) $wp_roles = new WP_Roles();
- 
+function change_role_name()
+{
+	global $wp_roles;
+	if (!isset($wp_roles)) $wp_roles = new WP_Roles();
+
 	$wp_roles->roles['administrator']['name'] = 'システムマスター';
-  $wp_roles->role_names['administrator'] = 'システムマスター';
- 
+	$wp_roles->role_names['administrator'] = 'システムマスター';
+
 	$wp_roles->roles['editor']['name'] = '管理マスター';
-  $wp_roles->role_names['editor'] = '管理マスター';
- 
+	$wp_roles->role_names['editor'] = '管理マスター';
+
 	$wp_roles->roles['author']['name'] = 'スタッフ';
 	$wp_roles->role_names['author'] = 'スタッフ';
- 
+
 	$wp_roles->roles['contributor']['name'] = '記事閲覧・作成のみ';
-  $wp_roles->role_names['contributor'] = '記事閲覧・作成のみ';
- 
+	$wp_roles->role_names['contributor'] = '記事閲覧・作成のみ';
+
 	$wp_roles->roles['subscriber']['name'] = '閲覧のみ';
-  $wp_roles->role_names['subscriber'] = '閲覧のみ';
+	$wp_roles->role_names['subscriber'] = '閲覧のみ';
 }
 add_action('init', 'change_role_name');
 
 // コメント非表示
-function comment_status_none( $open, $post_id ) {
-    $post = get_post( $post_id );
-    //投稿のコメントを投稿できないようにします
-    if( $post->post_type == 'post' ) {
-        return false;
-    }
-    //固定ページのコメントを投稿できないようにします
-    if( $post->post_type == 'page' ) {
-        return false;
-    }
-    //メディアのコメントを投稿できないようにします
-    if( $post->post_type == 'attachment' ) {
-        return false;
-    }
-    return false;
+function comment_status_none($open, $post_id)
+{
+	$post = get_post($post_id);
+	//投稿のコメントを投稿できないようにします
+	if ($post->post_type == 'post') {
+		return false;
+	}
+	//固定ページのコメントを投稿できないようにします
+	if ($post->post_type == 'page') {
+		return false;
+	}
+	//メディアのコメントを投稿できないようにします
+	if ($post->post_type == 'attachment') {
+		return false;
+	}
+	return false;
 }
-add_filter( 'comments_open', 'comment_status_none', 10 , 2 );
+add_filter('comments_open', 'comment_status_none', 10, 2);
 // 編集者（editor）にユーザー関連の管理権限を付与
-add_action('admin_init', function() {
-  $role = get_role( 'editor' );
+add_action('admin_init', function () {
+	$role = get_role('editor');
 
 
-$role->add_cap( 'create_users' );
-$role->add_cap( 'delete_users' );
-$role->add_cap( 'edit_users' );
-$role->add_cap( 'list_users' );
-$role->add_cap( 'promote_users' );
-$role->add_cap( 'remove_users' );
-$role->add_cap( 'create_posts' );
-$role->remove_cap( 'edit_theme_options' );
-$role->remove_cap( 'delete_others_pages' );
-$role->remove_cap( 'delete_pages' );
-$role->remove_cap( 'delete_private_pages' );
-$role->remove_cap( 'delete_published_pages' );
-$role->remove_cap( 'edit_others_pages' );
-$role->remove_cap( 'edit_pages' );
-$role->remove_cap( 'edit_private_pages' );
-$role->remove_cap( 'edit_published_pages' );
-$role->remove_cap( 'publish_pages' );
-$role->remove_cap( 'read_private_pages' );
-$role->remove_cap( 'edit_dashboard' );
-$role->remove_cap( 'moderate_comments' );
-$role->remove_cap( 'edit_dashboard' );
+	$role->add_cap('create_users');
+	$role->add_cap('delete_users');
+	$role->add_cap('edit_users');
+	$role->add_cap('list_users');
+	$role->add_cap('promote_users');
+	$role->add_cap('remove_users');
+	$role->add_cap('create_posts');
+	$role->remove_cap('edit_theme_options');
+	$role->remove_cap('delete_others_pages');
+	$role->remove_cap('delete_pages');
+	$role->remove_cap('delete_private_pages');
+	$role->remove_cap('delete_published_pages');
+	$role->remove_cap('edit_others_pages');
+	$role->remove_cap('edit_pages');
+	$role->remove_cap('edit_private_pages');
+	$role->remove_cap('edit_published_pages');
+	$role->remove_cap('publish_pages');
+	$role->remove_cap('read_private_pages');
+	$role->remove_cap('edit_dashboard');
+	$role->remove_cap('moderate_comments');
+	$role->remove_cap('edit_dashboard');
 });
 
 // 編集者（author）にユーザー関連の管理権限を付与
-add_action('admin_init', function() {
-  $role = get_role( 'author' );
+add_action('admin_init', function () {
+	$role = get_role('author');
 
 
-$role->add_cap( 'edit_others_posts' );
+	$role->add_cap('edit_others_posts');
 });
 
 
 // サイドメニューを非表示
-function remove_menus() {
-  remove_menu_page( 'index.php' ); // dashbord
-  remove_menu_page( 'edit.php?post_type=page' ); // 固定ページ
-  remove_menu_page( 'edit-comments.php' ); // コメント
-  remove_menu_page( 'tools.php' ); // ツール
+function remove_menus()
+{
+	remove_menu_page('index.php'); // dashbord
+	remove_menu_page('edit.php?post_type=page'); // 固定ページ
+	remove_menu_page('edit-comments.php'); // コメント
+	remove_menu_page('tools.php'); // ツール
 }
-add_action( 'admin_menu', 'remove_menus', 999 );
+add_action('admin_menu', 'remove_menus', 999);
 
-  /***********************************************************
+/***********************************************************
  アーカイブカスタムフィールド順変更
  ***********************************************************/
 
-function change_posts_per_page($query) {
- 
-  /* 管理画面,メインクエリに干渉しないために必須 */
-  if( is_admin() || ! $query->is_main_query() ){
-   return;
-  }
+function change_posts_per_page($query)
+{
 
-  /* カスタム投稿「gaichu」アーカイブページの表示件数を10件、投稿日の昇順でソート */
-  if ( $query->is_post_type_archive( 'gaichu' ) ) {
-    $query -> set( 'posts_per_page', '-1' ); // 10件
-    $query -> set('order','ASC'); // 昇順
-	$query->set( 'meta_key', 'gaichu_limit_date' ); // カスタムフィールドの値
-	$query -> set('orderby', 'meta_value'); // 投稿日
-    return;
-  }
- 
+	/* 管理画面,メインクエリに干渉しないために必須 */
+	if (is_admin() || !$query->is_main_query()) {
+		return;
+	}
+
+	/* カスタム投稿「gaichu」アーカイブページの表示件数を10件、投稿日の昇順でソート */
+	if ($query->is_post_type_archive('gaichu')) {
+		$query->set('posts_per_page', '-1'); // 10件
+		$query->set('order', 'ASC'); // 昇順
+		$query->set('meta_key', 'gaichu_limit_date'); // カスタムフィールドの値
+		$query->set('orderby', 'meta_value'); // 投稿日
+		return;
+	}
 }
- 
-add_action( 'pre_get_posts', 'change_posts_per_page' );
+
+add_action('pre_get_posts', 'change_posts_per_page');
 
 /***********************************************************
 プラグインの更新通知を非表示にする
-***********************************************************/
-remove_action( 'load-update-core.php', 'wp_update_plugins' );
-add_filter( 'pre_site_transient_update_plugins', '__return_null' );
+ ***********************************************************/
+remove_action('load-update-core.php', 'wp_update_plugins');
+add_filter('pre_site_transient_update_plugins', '__return_null');
 
 
 require_once dirname(__FILE__) . '/myfunction.php';
+
+/***********************************************************
+//更新の確認
+ ***********************************************************/
+require 'plugin-update-checker-master/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/Corp-ALFRED/test-cloudie',
+	__FILE__, //Full path to the main plugin file or functions.php.
+	'Cloud IE System'
+);
+
+//Optional: If you're using a private repository, specify the access token like this:
+$myUpdateChecker->setAuthentication('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');
+
+//Optional: Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');

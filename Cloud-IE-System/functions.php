@@ -609,26 +609,27 @@ add_action('pre_get_posts', 'change_posts_per_page');
 /***********************************************************
 プラグインの更新通知を非表示にする
  ***********************************************************/
-remove_action('load-update-core.php', 'wp_update_plugins');
-add_filter('pre_site_transient_update_plugins', '__return_null');
-
-
-require_once dirname(__FILE__) . '/myfunction.php';
+//remove_action('load-update-core.php', 'wp_update_plugins');
+//add_filter('pre_site_transient_update_plugins', '__return_null');
+//
+//
+//require_once dirname(__FILE__) . '/myfunction.php';
 
 /***********************************************************
 //更新の確認
  ***********************************************************/
-require '/plugin-update-checker-master/plugin-update-checker.php';
+require get_template_directory() . '/plugin-update-checker/plugin-update-checker.php';
+
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://github.com/Corp-ALFRED/test-cloudie',
-	__FILE__, //Full path to the main plugin file or functions.php.
+	'https://github.com/Corp-ALFRED/test-cloudie/',
+	__FILE__,
 	'Cloud IE System'
 );
 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
 //Optional: If you're using a private repository, specify the access token like this:
 $myUpdateChecker->setAuthentication('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');
-
-//Optional: Set the branch that contains the stable release.
-$myUpdateChecker->setBranch('master');

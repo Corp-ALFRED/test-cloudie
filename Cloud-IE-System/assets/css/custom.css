@@ -1,0 +1,446 @@
+@charset "utf-8";
+/*
+追加のCSS
+*/
+
+body {
+    -webkit-print-color-adjust: exact;
+}
+
+.sp-only {
+	display:none;
+}
+
+
+/********
+ヘッダー
+********/
+.header-logo a:hover {
+    text-decoration: none;
+}
+
+a.prepare-document-btn {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: fit-content;
+    background-color: #008fc4;
+    color: #fff;
+    border-radius: 5px;
+    letter-spacing: 0.25em;
+}
+
+/********
+トップページ
+********/
+.news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+form .search-submit {
+    width: 100%;
+    line-height: 1.1em;
+}
+
+form div#search-box .search-submit {
+    width: 48%;
+}
+
+/** サイドバー **/
+form#form {
+    margin: 20px 0;
+}
+
+input#s-box {
+    width: 70%;
+}
+
+button#s-btn-area {
+    width: 25%;
+}
+
+div#csv-export {
+	display: none;
+}
+
+/********
+見積・請求ページ
+********/
+table.table-bill .bill-cell-days {
+    width: 10em;
+}
+
+table.table-bill>tbody>tr>td {
+    vertical-align: middle;
+}
+
+td.tori-disp {
+	white-space: nowrap;
+}
+
+/********
+支払仕訳ページ
+********/
+.bill-wrap.gaichu-wrap {
+    min-height: calc(100vh - 4em - var(--user_bar_vh) - var(--footer_vh));
+}
+
+div.gaichu-wrap .col-xs-6 {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 40px;
+    float: unset;
+}
+
+div.gaichu-wrap h1.bill-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    margin-bottom: 40px;
+}
+
+.container.shiwake-info-wrapper:before {
+    display: none;
+}
+
+.shiwake-info-wrapper {
+    display: flex;
+    gap: 2%;
+    margin-bottom: 40px;
+}
+
+.shiwake-info-content {
+    width: 49%;
+}
+
+.gaichu-post-img {
+    width: 49%;
+    margin: auto;
+    text-align: center;
+}
+
+.gaichu-post-img img {
+    width: 40%;
+    height: auto;
+}
+
+div.gaichu-wrap .bill-estimate-title dt,
+div.gaichu-wrap .bill-estimate-title dd {
+    padding-bottom: 4px;
+}
+
+div.gaichu-wrap .bill-estimate-title dt {
+    font-size: 14px;
+    width: 5em;
+}
+
+div.gaichu-wrap .bill-estimate-title dd {
+    font-size: 16px;
+    text-indent: 1em;
+}
+
+.gaichu-post-img a {
+    display: inline-block;
+    font-size: 20px;
+}
+
+/********
+印刷時のCSS
+********/
+@media print {
+    html body {
+        font-size: 80% !important;
+    }
+}
+
+/****************
+*****************
+画面幅が768px以下
+*****************
+****************/
+@media screen and (max-width: 768px) {
+
+	.pc-only {
+	display:none;
+}
+	
+	.sp-only {
+	display:block;
+}
+    /********
+ヘッダー
+********/
+	.header-description {
+		font-size: 12px;
+		display: inline-block;
+		vertical-align: sub;
+	}
+
+    /********
+トップページ
+********/
+    .search-box {
+        display: block;
+    }
+
+    form dl {
+        width: 100%;
+    }
+
+    form dl dt {
+        width: 6em;
+    }
+
+    form dl dd {
+        width: auto;
+    }
+
+    form div#search-box .search-submit {
+        position: relative;
+        left: 50%;
+        translate: -50%;
+        width: 80%;
+        margin: 20px auto auto;
+    }
+
+    .document-wrapper {
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: thin;
+        margin-bottom: 20px;
+    }
+
+    .document-wrapper .table {
+        margin-bottom: 0;
+    }
+
+    .export-box .btn,
+    .export-box a.btn,
+    .export-box button.btn {
+        font-size: 1.2rem;
+        padding: 8px;
+        letter-spacing: 0;
+    }
+
+    /********
+    見積書・請求書
+    ********/
+    .bill-no-print .document-edit-btn {
+        font-size: 14px;
+        padding: 1rem 3rem;
+    }
+
+    .bill-no-print .document-print-btn {
+        display: none;
+    }
+
+    /**** 11px ****/
+    .document-container,
+    p.bill-message,
+    dt.text-nowrap,
+    .bill-info-table th,
+    .bill-info-table td,
+    .bill-address,
+    table.table-bill thead tr th,
+    table.table-bill>tbody>tr>td,
+    table.table-bill-total tbody tr th,
+    .bill-remarks dt,
+    dl.bill-remarks p {
+        font-size: 1.32vw;
+    }
+
+    .document-container .table>tbody>tr>th.active,
+    .document-container .table>tbody>tr>td {
+        font-size: 1.32vw;
+    }
+
+    /**** 14px ****/
+    .bill-destination-client,
+    .bill-destination-honorific,
+    .address-area .client-destination {
+        font-size: 1.68vw;
+    }
+
+    /**** 16px ****/
+    .bill-estimate-title dd {
+        font-size: 1.92vw;
+    }
+
+    /**** 18px ****/
+    .bill-title,
+    #invoice-top-bill-total.bill-total dt,
+    #invoice-top-bill-total.bill-total dd,
+    .bill-address-own h4,
+    .bill-address-own h5,
+    .client-wrap h4 {
+        font-size: 2.16vw !important;
+    }
+
+    .caption {
+        font-size: 70%;
+    }
+
+
+    /**** padding & margin ****/
+    .document-container .col-lg-1,
+    .document-container .col-lg-10,
+    .document-container .col-lg-11,
+    .document-container .col-lg-12,
+    .document-container .col-lg-2,
+    .document-container .col-lg-3,
+    .document-container .col-lg-4,
+    .document-container .col-lg-5,
+    .document-container .col-lg-6,
+    .document-container .col-lg-7,
+    .document-container .col-lg-8,
+    .document-container .col-lg-9,
+    .document-container .col-md-1,
+    .document-container .col-md-10,
+    .document-container .col-md-11,
+    .document-container .col-md-12,
+    .document-container .col-md-2,
+    .document-container .col-md-3,
+    .document-container .col-md-4,
+    .document-container .col-md-5,
+    .document-container .col-md-6,
+    .document-container .col-md-7,
+    .document-container .col-md-8,
+    .document-container .col-md-9,
+    .document-container .col-sm-1,
+    .document-container .col-sm-10,
+    .document-container .col-sm-11,
+    .document-container .col-sm-12,
+    .document-container .col-sm-2,
+    .document-container .col-sm-3,
+    .document-container .col-sm-4,
+    .document-container .col-sm-5,
+    .document-container .col-sm-6,
+    .document-container .col-sm-7,
+    .document-container .col-sm-8,
+    .document-container .col-sm-9,
+    .document-container .col-xs-1,
+    .document-container .col-xs-10,
+    .document-container .col-xs-11,
+    .document-container .col-xs-12,
+    .document-container .col-xs-2,
+    .document-container .col-xs-3,
+    .document-container .col-xs-4,
+    .document-container .col-xs-5,
+    .document-container .col-xs-6,
+    .document-container .col-xs-7,
+    .document-container .col-xs-8,
+    .document-container .col-xs-9 {
+        padding-right: 1.8vw;
+        padding-left: 1.8vw;
+    }
+
+    .bill-wrap #invoice-top-bill-total.bill-total dt,
+    .bill-wrap #invoice-top-bill-total.bill-total dd {
+        padding: 1.2vw;
+    }
+
+    .document-container .h4,
+    .document-container .h5,
+    .document-container .h6,
+    .document-container h4,
+    .document-container h5,
+    .document-container h6 {
+        margin-top: 1.2vw;
+        margin-bottom: 1.2vw;
+    }
+
+    .document-container .table>tbody>tr>td,
+    .document-container .table>tbody>tr>th,
+    .document-container .table>tfoot>tr>td,
+    .document-container .table>tfoot>tr>th,
+    .document-container .table>thead>tr>td,
+    .document-container .table>thead>tr>th {
+        padding: 0.96vw;
+    }
+
+    .bill-title {
+        margin-top: 1.2vw;
+        margin-bottom: 0.96vw;
+    }
+
+    .document-container dl {
+        margin-bottom: 2.4vw;
+    }
+
+    #invoice-top-bill-total.bill-total dt,
+    #invoice-top-bill-total.bill-total dd,
+    .table-bordered>tbody>tr>td,
+    .table-bordered>tbody>tr>th,
+    .table-bordered>tfoot>tr>td,
+    .table-bordered>tfoot>tr>th,
+    .table-bordered>thead>tr>td,
+    .table-bordered>thead>tr>th {
+        border: .5px solid #ddd !important;
+    }
+
+    /********
+    支払仕訳帳
+    ********/
+    div.gaichu-wrap .col-xs-6 {
+        width: 24em;
+    }
+
+    div.gaichu-wrap h1.bill-title {
+        font-size: 16px !important;
+        margin-top: 10px;
+    }
+
+    .shiwake-info-wrapper {
+        display: block;
+    }
+
+    .shiwake-info-content {
+        width: 100%;
+    }
+
+    div.gaichu-wrap .bill-estimate-title dt {
+        font-size: 12px;
+    }
+
+    div.gaichu-wrap .bill-estimate-title dd {
+        font-size: 14px;
+    }
+
+    .gaichu-post-img {
+        width: 60%;
+    }
+
+    .gaichu-post-img img {
+        width: 100%;
+    }
+
+    .shiwake-container {
+        overflow-x: scroll;
+        scrollbar-width: thin;
+    }
+
+    .shiwake-container .table-bordered {
+        white-space: nowrap;
+    }
+
+    .shiwake-container table.table-bill thead tr th,
+    table.table-bill tbody tr.tekiyou-content th,
+    .shiwake-container table.table-bill>tbody>tr>td {
+        font-size: 14px;
+    }
+	.sp-model{
+		margin:20px 10px 10px 10px;
+		border:2px solid #008fc4;
+		padding:8px 10px;
+		background-color:#ffffff;
+	}
+}
+
+@media screen and (max-width: 321px) {
+    body {
+        font-size: 10px;
+    }
+}

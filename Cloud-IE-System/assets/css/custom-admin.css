@@ -1,0 +1,30 @@
+/**** 2024.01.23追加 ****/
+.form-table th {
+	vertical-align: middle;
+}
+
+#meta_box_bill_m_items .vk-custom-field-builder .table th.bill-table-title-tori {
+	display: none;
+}
+
+#meta_box_bill_m_items .vk-custom-field-builder .table td.bill-cell-tori {
+	display: none;
+}
+
+.vk-custom-field-builder .table td.bill-cell-tori {
+	width: 10em;
+}
+
+.vk-custom-field-builder .table td.bill-cell-tori input {
+	width: 100%;
+}
+
+div#aiowps-dashnotice {display: none}
+
+.bill-cell-price{width:7em}
+
+/**
+ .vk-custom-field-builder .table tr.cf_item:first-child {
+	display: none;
+}
+**/

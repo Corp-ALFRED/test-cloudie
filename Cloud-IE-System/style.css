@@ -1,0 +1,93 @@
+@charset "utf-8";
+/*
+Theme Name: Cloud IE System
+Description:初期段階・テーマ説明
+Author: ALFRED,Inc.
+Author URI: http://www.corp-alfred.com/
+Version:1.11.1
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: Made ALFRED
+*/
+p.handp-btn{
+	text-align:center;
+	margin:10px 0;
+}
+p.handp-btn a{
+  overflow: hidden;
+  padding: 1.5rem 6rem;
+  color: #fff;
+  border-radius: 0;
+  background: #000;
+  display:inline-block;
+  margin: 0 10px;
+}
+
+a.btn-flat {
+  overflow: hidden;
+  padding: 1.5rem 6rem;
+  color: #fff;
+  border-radius: 0;
+  background: #000;
+}
+
+a.btn-flat span {
+  position: relative;
+}
+
+a.btn-flat:before {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 150%;
+  height: 500%;
+  content: '';
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-70%) rotate(135deg);
+  transform: translateX(-98%) translateY(-70%) rotate(135deg);
+  background: #fff100;
+}
+
+a.btn-flat:hover:before {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(135deg);
+  transform: translateX(-9%) translateY(-25%) rotate(135deg);
+}
+
+/*??，??¨????e??{?b?N?X?T?C?Y?Z?o?dborer-box?E */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem?Z?o????-?・????E*/
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}

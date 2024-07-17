@@ -1,0 +1,249 @@
+@mixin bill-th{
+	white-space: nowrap;
+	background-color: #f5f5f5 !important;
+	-webkit-print-color-adjust: exact;
+}
+
+body.single {
+	font-size:11px;
+}
+
+.bill-wrap {
+	display:block; overflow:hidden;
+	padding: 2em 0;
+	page-break-after:always;
+	@media screen{
+		border-bottom:1px solid #e5e5e5;
+	}
+}
+.bill-title {
+	line-height: 1em;
+	border-bottom:3px double #000;
+	text-align: center;
+	letter-spacing: 1em;
+	margin-top:10px;
+	margin-bottom:1em;
+	font-size:1.6em;
+}
+.bill-destination {
+	font-size:1.3em;
+	padding-bottom:0.1em;
+	border-bottom:1px solid #000;
+	margin-bottom:1em;
+	width:100%;
+	display: table;
+}
+.bill-destination-client {
+	display: table-cell;
+}
+.bill-destination-honorific {
+	display: table-cell;
+	text-align: right;
+}
+
+.bill-total {
+	display: table;
+	border-bottom:1px solid #000;
+	width:100%;
+	dt,
+	dd { display: table-cell; }
+	dd {
+		font-size:1.6em;
+		text-align: center;
+	}
+}
+
+.bill-message {
+	margin-bottom:2em;
+}
+.bill-estimate-title {
+	border-bottom:1px solid #000;
+	width:100%;
+	display: table;
+	dt,
+	dd { display: table-cell; }
+	dt {
+		width:3em;
+	}
+	dd {
+		font-size:1.4em;
+	}
+}
+
+.bill-info-table{
+	width:100%;
+	margin-bottom:3em;
+	th,
+	td {
+		padding-top: 0.5em;
+		border-bottom:1px solid #999;
+	}
+	td {
+		text-align: right;
+	}
+}
+
+.bill-address-own {
+	position: relative;
+	margin-bottom:2em;
+}
+.bill-seal {
+	position: absolute;
+	top:0;
+	right:0;
+	width:100px;
+	height:auto;
+}
+
+.bill-footer {
+	margin-top:2em;
+	text-align: right;
+}
+.bill-footer-logo {
+	width:180px;
+	height:auto;
+}
+
+
+table.table-bill {
+	&.table-striped tbody tr:nth-of-type(odd) {
+	    background-color: #f6f6f6;
+	}
+	.price {
+		text-align: right;
+		white-space: nowrap;
+	}
+	thead tr th {
+		@include bill-th;
+		box-sizing: border-box;
+	}
+	thead,
+	tfoot {
+		th,td {
+			font-weight: bold;
+		}
+	}
+	tfoot{
+		border-top:2px solid #d5d5d5;
+	}
+	.bill-cell-count {
+		width:5em;
+	}
+	.bill-cell-unit {
+		width:3em;
+	}
+	.bill-cell-single-price{
+		width:6em;
+	}
+	.bill-cell-excluding-tax{
+		width:6em;
+	}
+	.bill-cell-tax-rate{
+		width:4em;
+	}
+	.bill-cell-tax-price{
+		width:4em;
+	}
+	.bill-cell-total-price{
+		width:4em;
+	}
+}
+table.table-bill-total {
+	width:auto;
+	float:right;
+	margin-left:3em;
+	th {
+		width:8em;
+		@include bill-th;
+	}
+}
+table.table-attendance {
+	tbody>tr>th,
+	tbody>tr>td {
+		padding:4px;
+	}
+}
+
+.bill-remarks {
+	dt {
+		float:left;
+		margin-right:2em;
+	}
+	dd {
+		display:block; overflow:hidden;
+	}
+}
+
+.bill-payee {
+	td { position: relative; }
+}
+.bill-payee-text {
+	float:left;
+	line-height: 1.5em;
+	margin:0;
+}
+.bill-payee-logo {
+	float:right;
+	bottom:0;
+	width:auto;
+	height:3.5em;
+	margin-top:1em;
+	margin-right:1em;
+}
+
+.bill-content{
+	margin:3em 0;
+	h2,h3,h4,h5 {
+		font-weight: bold;
+		padding: 0;
+		background: none;
+		margin:1.5em 0 0.8em;
+	}
+	h2 {
+		font-size:18px;
+	}
+	h3 {
+		font-size:16px;
+	}
+	h4 {
+		font-size:14px;
+	}
+	p {
+		font-size:12px;
+		line-height: 1.7em;
+	}
+	table th {
+		background-color: #f5f5f5;
+	}
+}
+body.single-others .bill-remarks {
+	padding-top:2em;
+	border-top:1px solid #ccc;
+	font-size:12px;
+}
+
+.bill-no-print {
+	background-color: #f5f5f5;
+	padding:2em 0;
+}
+
+@media print {
+.no-print,
+.bill-no-print {
+	display: none;
+}
+table.table-attendance {
+	tr.bg-info > td {
+		background-color: #d9edf7 !important;
+	}
+	tr.bg-danger > td {
+		background-color: #f2dede !important;
+	}
+	tr.bg-warning > td {
+		background-color: #fcf8e3 !important;
+	}
+	tr.bg-success > td {
+		background-color: #dff0d8 !important;
+	}
+}
+} // @media print {

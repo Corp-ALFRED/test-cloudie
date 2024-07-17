@@ -618,7 +618,7 @@ require_once dirname(__FILE__) . '/myfunction.php';
 /***********************************************************
 //更新の確認
  ***********************************************************/
-require 'plugin-update-checker-master/plugin-update-checker.php';
+require '/plugin-update-checker-master/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
